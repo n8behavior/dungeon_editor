@@ -8,7 +8,7 @@ sudo apt install python3 python3-dev python3-venv python-is-python3 python-dev-i
 
 Virtual env setup
 ```
-python3 -m venv dungeon_editor_env
+python -m venv dungeon_editor_env
 source dungeon_editor_env/bin/activate
 pip install PySide2 sphinx numpy PyOpenGL
 ```
