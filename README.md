@@ -6,7 +6,7 @@ Virtual env setup
 sudo apt install python3-venv
 python3 -m venv dungeon_editor_env
 source dungeon_editor_env/bin/activate
-pip install PyQt5
+pip install PySide2
 ```
 
 Clone this repo

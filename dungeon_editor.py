@@ -1,7 +1,7 @@
 import sys
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPalette, QColor
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QSplitter, QVBoxLayout
+from PySide2.QtCore import Qt
+from PySide2.QtGui import QPalette, QColor
+from PySide2.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QSplitter, QVBoxLayout
 
 class Color(QWidget):
     def __init__(self, color, *args, **kwargs):
