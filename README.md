@@ -1,12 +1,16 @@
 # Dungeon Editor
 
-Virtual env setup
+Let's make sure we're using Python3, and get get our system toolchain ready
 
 ```sh
-sudo apt install python3-venv
+sudo apt install python3 python3-dev python3-venv python-is-python3 python-dev-is-python3 libclang-dev 
+```
+
+Virtual env setup
+```
 python3 -m venv dungeon_editor_env
 source dungeon_editor_env/bin/activate
-pip install PySide2
+pip install PySide2 sphinx numpy PyOpenGL
 ```
 
 Clone this repo
