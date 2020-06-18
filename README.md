@@ -3,7 +3,7 @@
 Let's make sure we're using Python3, and get get our system toolchain ready
 
 ```sh
-sudo apt install python3 python3-dev python3-venv python-is-python3 python-dev-is-python3 libclang-dev 
+sudo apt install python3 python3-dev python3-venv python-is-python3 python-dev-is-python3 libclang-dev cmake make g++ libx11-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxrandr-dev libxext-dev libxcursor-dev libxinerama-dev libxi-dev
 ```
 
 Then install Qt
