@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QListWidget>
 #include <QMainWindow>
 #include <QPlainTextEdit>
 #include <QSessionManager>
@@ -12,7 +13,7 @@ class dungeon_editor : public QMainWindow
 public:
     dungeon_editor();
 
-    void load_dungeon(const QString &file_name);
+    void load_dungeon(const QString &dungeon_name);
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -31,14 +32,15 @@ private slots:
 private:
     void create_editor_actions();
     void create_editor_status_bar();
+    void create_editor_dock_widgets();
     void read_editor_settings();
     void write_editor_settings();
     bool maybe_save_dungeon();
     bool save_dungeon(const QString &dungeon_name);
     void set_current_dungeon(const QString &dungeon_name);
-    QString stripped_dungeon_name(const QString &full_dungeon_name);
 
     QPlainTextEdit *q_plain_text_edit;
     QString current_dungeon;
+    QListWidget *dungeon_properties;
 };
 #endif // MAINWINDOW_H
