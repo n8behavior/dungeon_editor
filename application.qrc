@@ -1,7 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
 <qresource>
-<!--
+<!-- override app icons here
     <file>images/copy.png</file>
     <file>images/cut.png</file>
     <file>images/new.png</file>
