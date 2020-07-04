@@ -1,12 +1,12 @@
-#include "orbit_transform_controller.h"
+#include "orbit_transform_controller.hpp"
 
-#include <Qt3DCore/qtransform.h>
+#include <Qt3DCore/QTransform>
 
 OrbitTransformController::OrbitTransformController(QObject *parent)
     : QObject(parent)
     , m_target(nullptr)
     , m_matrix()
-    , m_radius(1.0f)
+    , m_radius(10.0f)
     , m_angle(0.0f)
 {
 }

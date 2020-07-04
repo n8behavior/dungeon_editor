@@ -13,6 +13,7 @@ class EditorWindow: public QMainWindow
 
 public:
     EditorWindow();
+    ~EditorWindow();
 
     void load_dungeon(const QString &dungeon_name);
 
@@ -23,6 +24,7 @@ private slots:
     bool save_as();
     void about();
     void dungeon_was_modified();
+    void show_debug_overlay();
 #ifndef QT_NO_SESSIONMANAGER
     void commit_data(QSessionManager &);
 #endif
@@ -39,6 +41,7 @@ private:
     Qt3DCore::QEntity *createScene();
 
     Dungeon dungeon;
+    DungeonView *dungeon_view;
     QString current_dungeon;
     QListWidget* dungeon_properties;
 };

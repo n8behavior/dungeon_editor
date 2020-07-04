@@ -27,18 +27,17 @@ DungeonView::DungeonView() {
 }
 
 void DungeonView::createScene() {
-    defaultFrameGraph()->setClearColor(QColor(QRgb(0xbe3000)));
+    //defaultFrameGraph()->setClearColor(QColor(QRgb(0xbe3000)));
+    defaultFrameGraph()->setClearColor(QColor(QRgb(0x111133)));
 
     // Root entity
     auto* root_entity = new Qt3DCore::QEntity();
 
     // Camera
     auto* camera = this->camera();
-    camera->lens()->setPerspectiveProjection(55.0f, 16.0f/9.0f, 0.1f, 1000.0f);
-    //camera->lens()->setOrthographicProjection(-10.0f,10.0f,-10.0f,10.0f,0.1f,30.0f);
+    camera->lens()->setPerspectiveProjection(45.0f, 9.0f/9.0f, 0.1f, 1000.0f);
+    //camera->lens()->setOrthographicProjection(-50.0f,50.0f,-50.0f,50.0f,0.1f,1000.0f);
     camera->setPosition(QVector3D(0, 0, 60.0f));
-    camera->setUpVector(QVector3D(0, 1, 0));
-    camera->setViewCenter(QVector3D(0, 0, 0));
 
     auto* light_entity = new Qt3DCore::QEntity(root_entity);
     auto* point_light = new Qt3DRender::QPointLight(light_entity);
@@ -69,8 +68,8 @@ void DungeonView::createScene() {
     torusMesh->setSlices(20);
 
     Qt3DCore::QTransform *torusTransform = new Qt3DCore::QTransform;
-    torusTransform->setScale3D(QVector3D(1.5, 1, 0.5));
-    torusTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(1, 0, 0), 45.0f));
+    torusTransform->setScale3D(QVector3D(1, 1, 1));
+    torusTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(1, 0, 0), 0.0f));
 
     torusEntity->addComponent(torusMesh);
     torusEntity->addComponent(torusTransform);
@@ -84,7 +83,7 @@ void DungeonView::createScene() {
     Qt3DCore::QTransform *sphereTransform = new Qt3DCore::QTransform;
     OrbitTransformController *controller = new OrbitTransformController(sphereTransform);
     controller->setTarget(sphereTransform);
-    controller->setRadius(20.0f);
+    controller->setRadius(10.0f);
 
     QPropertyAnimation *sphereRotateTransformAnimation = new QPropertyAnimation(sphereTransform);
     sphereRotateTransformAnimation->setTargetObject(controller);

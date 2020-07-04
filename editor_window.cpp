@@ -10,6 +10,8 @@
 
 #include <QtGui/QScreen>
 
+#include <Qt3DExtras/QForwardRenderer>
+
 #include <QCoreApplication>
 
 #include "editor_window.hpp"
@@ -18,7 +20,7 @@ EditorWindow::EditorWindow() {
     setWindowTitle(QCoreApplication::applicationName());
 
     // create our dungeon view (3DWindow) and embed it in the editor
-    auto *dungeon_view = new DungeonView();
+    dungeon_view = new DungeonView();
     dungeon_view->createScene();
     auto *dungeon_view_container= QWidget::createWindowContainer(dungeon_view );
     dungeon_view_container->setMinimumSize(QSize(200, 100));
@@ -29,6 +31,11 @@ EditorWindow::EditorWindow() {
     create_editor_actions();
     create_editor_status_bar();
     create_editor_dock_widgets();
+}
+
+EditorWindow::~EditorWindow()
+{
+    delete dungeon_view;
 }
 
 void EditorWindow::new_dungeon() {
@@ -78,6 +85,13 @@ void EditorWindow::dungeon_was_modified() {
     // TODO: setWindowModified(view->isModified());
 }
 
+void EditorWindow::show_debug_overlay()
+{
+    qInfo() << "Called";
+    auto show_state = dungeon_view->defaultFrameGraph()->showDebugOverlay();
+    dungeon_view->defaultFrameGraph()->setShowDebugOverlay(!show_state);
+}
+
 void EditorWindow::commit_data(QSessionManager &) {
     qInfo() << "Called";
 }
@@ -87,6 +101,15 @@ void EditorWindow::create_editor_actions() {
     // Dungeon menu and toolbar
     auto *dungeon_menu = menuBar()->addMenu("&Dungeon");
     auto *dungeon_tool_bar = addToolBar("Dungeon");
+
+    // Show Debug Overlay
+    const auto show_debug_overlay_icon = QIcon::fromTheme("debug-run", QIcon(":/images/debug-run.png"));
+    auto *show_debug_overlay = new QAction(show_debug_overlay_icon, tr("Show &Debug Overlay"), this);
+    //show_debug_overlay->setShortcuts(??);
+    show_debug_overlay->setStatusTip(tr("Show debug overlay"));
+    connect(show_debug_overlay, &QAction::triggered, this, &EditorWindow::show_debug_overlay);
+    dungeon_menu->addAction(show_debug_overlay);
+    dungeon_tool_bar->addAction(show_debug_overlay);
 
     // New dungeon
     const auto new_dungeon_icon = QIcon::fromTheme("document-new", QIcon(":/images/new.png"));
