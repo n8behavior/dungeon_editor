@@ -16,10 +16,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Dungeon Editor");
 
     // set stylesheet
-    QFile file(":/dark.qss");
-    file.open(QFile::ReadOnly | QFile::Text);
-    QTextStream stream(&file);
-    app.setStyleSheet(stream.readAll());
+    //QFile file(":/dark.qss");
+    //file.open(QFile::ReadOnly | QFile::Text);
+    //QTextStream stream(&file);
+    //app.setStyleSheet(stream.readAll());
 
     EditorWindow main_window {};
     main_window.show();

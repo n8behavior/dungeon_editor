@@ -1,8 +1,8 @@
 #ifndef ORBITTRANSFORMCONTROLLER_H
 #define ORBITTRANSFORMCONTROLLER_H
 
-#include <QObject>
-#include <QMatrix4x4>
+#include <QtCore/QObject>
+#include <QtGui/QMatrix4x4>
 
 namespace Qt3DCore {
 class QTransform;

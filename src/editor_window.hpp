@@ -1,35 +1,19 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef EDITORWINDOW_H
+#define EDITORWINDOW_H
 
-#include <QListWidget>
-#include <QMainWindow>
-#include <QSessionManager>
-
-#include <Qt3DCore/QEntity>
-#include <Qt3DCore/QTransform>
-#include <Qt3DCore/QAspectEngine>
-
-#include <Qt3DRender/QCamera>
-#include <Qt3DRender/QCameraLens>
-#include <Qt3DRender/QRenderAspect>
-
-#include <Qt3DInput/QInputAspect>
-
-#include <Qt3DExtras/QForwardRenderer>
-#include <Qt3DExtras/QPhongMaterial>
-#include <Qt3DExtras/QCylinderMesh>
-#include <Qt3DExtras/QSphereMesh>
-#include <Qt3DExtras/QTorusMesh>
-#include <Qt3DExtras/Qt3DWindow>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QMainWindow>
+#include <QtGui/QSessionManager>
 
 #include "dungeon.hpp"
-/*
-class DungeonModifier
+
+class EditorWindow: public QMainWindow
 {
-    //Q_OBJECT
+    Q_OBJECT
 
 public:
-    DungeonModifier(Dungeon&);
+    EditorWindow();
+    ~EditorWindow();
 
     void load_dungeon(const QString &dungeon_name);
 
@@ -40,6 +24,7 @@ private slots:
     bool save_as();
     void about();
     void dungeon_was_modified();
+    void show_debug_overlay();
 #ifndef QT_NO_SESSIONMANAGER
     void commit_data(QSessionManager &);
 #endif
@@ -55,9 +40,11 @@ private:
     void set_current_dungeon(const QString &dungeon_name);
     Qt3DCore::QEntity *createScene();
 
-    Dungeon& dungeon;
+    Dungeon dungeon;
+    DungeonView *dungeon_view;
     QString current_dungeon;
     QListWidget* dungeon_properties;
 };
-*/
-#endif // MAINWINDOW_H
+
+
+#endif // EDITORWINDOW_H

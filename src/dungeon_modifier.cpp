@@ -1,4 +1,3 @@
-#include <QtWidgets>
 
 #include <Qt3DCore/QEntity>
 #include <Qt3DCore/QTransform>
