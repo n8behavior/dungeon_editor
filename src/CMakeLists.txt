@@ -2,9 +2,6 @@ project(main_prog)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-#set(Qt5Core_DIR         "/home/jack/Qt/5.15.0/gcc_64/lib/cmake/Qt5Core")
-#set(Qt5_DIR             "/home/jack/Qt/5.15.0/gcc_64/lib/cmake/Qt5")
-#set(QT_QMAKE_EXECUTABLE "/home/jack/Qt/5.15.0/gcc_64/bin/qmake")
 
 find_package(Qt5 COMPONENTS Core Widgets Gui 3DCore 3DRender 3DInput 3DExtras REQUIRED)
 

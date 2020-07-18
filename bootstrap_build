@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# get to the top
+cd $(git root)
+
+# select a Qt install (see `qmake -query`)
+export CMAKE_PREFIX_PATH=${QT_INSTALL_PREFIX:-$HOME/Qt/5.15.0/gcc_64}
+echo "using $CMAKE_PREFIX_PATH"
+echo "export QT_INSTALL_PREFIX to override"
+
+# setup build directory
+rm -rf build
+mkdir -p build
+cd build
+cmake --log-level=ERROR ..
+
+# build is ready now
+make -j $(nproc)
+
