@@ -23,7 +23,11 @@ target_compile_features(main_lib PUBLIC cxx_std_17)
 target_link_libraries(main_lib PUBLIC Qt5::Core)
 
 # The main program
-add_executable(main_prog main.cpp application.qrc)
+add_executable(main_prog
+    main.cpp
+    breeze.qrc
+    application.qrc
+    )
 target_link_libraries(main_prog PUBLIC main_lib
     Qt5::Core
     Qt5::Widgets
