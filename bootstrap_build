@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # get to the top
-cd $(git root)
+cd "$(git root)" || {
+  echo "Could not find root of git repository"
+  exit 1
+}
 
 # select a Qt install (see `qmake -query`)
 export CMAKE_PREFIX_PATH=${QT_INSTALL_PREFIX:-$HOME/Qt/5.15.0/gcc_64}
@@ -11,9 +14,12 @@ echo "export QT_INSTALL_PREFIX to override"
 # setup build directory
 rm -rf build
 mkdir -p build
-cd build
+cd build || {
+  echo "Could not enter build directory"
+  exit 1
+}
 cmake --log-level=ERROR ..
 
 # build is ready now
-make -j $(nproc)
+make -j "$(nproc)"
 
